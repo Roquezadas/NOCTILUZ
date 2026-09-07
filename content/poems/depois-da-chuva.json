@@ -1,0 +1,20 @@
+{
+  "id": "demo-08",
+  "slug": "depois-da-chuva",
+  "title": "depois da chuva",
+  "excerpt": "a chuva deixou\num pequeno céu na calçada.\npassei devagar",
+  "content": "a chuva deixou\num pequeno céu na calçada.\npassei devagar\npara não pisar nas nuvens.",
+  "place": "ceu",
+  "tags": [
+    "esperanca",
+    "encontro"
+  ],
+  "date": "2026-08-17",
+  "featured": false,
+  "mood": "contemplative",
+  "accent": "cyan",
+  "series": null,
+  "language": "pt-BR",
+  "demo": true,
+  "phrase": "quero recomeçar"
+}

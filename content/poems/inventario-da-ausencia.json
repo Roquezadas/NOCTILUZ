@@ -1,0 +1,21 @@
+{
+  "id": "demo-02",
+  "slug": "inventario-da-ausencia",
+  "title": "inventário da ausência",
+  "excerpt": "na casa vazia,\na luz do corredor\nainda espera alguém.",
+  "content": "na casa vazia,\na luz do corredor\nainda espera alguém.\neu também.",
+  "place": "ruinas",
+  "tags": [
+    "saudade",
+    "ausencia",
+    "termino"
+  ],
+  "date": "2026-08-23",
+  "featured": true,
+  "mood": "contemplative",
+  "accent": "violet",
+  "series": "Em português se diz",
+  "language": "pt-BR",
+  "demo": true,
+  "phrase": "eu sinto sua falta"
+}

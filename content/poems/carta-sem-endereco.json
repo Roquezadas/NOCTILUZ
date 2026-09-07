@@ -1,0 +1,20 @@
+{
+  "id": "demo-06",
+  "slug": "carta-sem-endereco",
+  "title": "carta sem endereço",
+  "excerpt": "escrevi seu nome\nnum envelope vazio.\nhá palavras",
+  "content": "escrevi seu nome\nnum envelope vazio.\n\nhá palavras\nque precisam primeiro\naprender a sair de casa.",
+  "place": "cartas",
+  "tags": [
+    "confissao",
+    "saudade"
+  ],
+  "date": "2026-08-19",
+  "featured": false,
+  "mood": "contemplative",
+  "accent": "gold",
+  "series": "Em português se diz",
+  "language": "pt-BR",
+  "demo": true,
+  "phrase": "queria dizer algo que nunca disse"
+}

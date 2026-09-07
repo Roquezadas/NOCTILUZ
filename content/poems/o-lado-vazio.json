@@ -1,0 +1,21 @@
+{
+  "id": "demo-09",
+  "slug": "o-lado-vazio",
+  "title": "o lado vazio",
+  "excerpt": "mudei os móveis de lugar.\na cadeira ficou perto da janela.\na mesa, perto da porta.",
+  "content": "mudei os móveis de lugar.\na cadeira ficou perto da janela.\na mesa, perto da porta.\n\na falta\nnão se moveu.",
+  "place": "ruinas",
+  "tags": [
+    "termino",
+    "ausencia",
+    "rejeicao"
+  ],
+  "date": "2026-08-16",
+  "featured": false,
+  "mood": "contemplative",
+  "accent": "violet",
+  "series": "Em português se diz",
+  "language": "pt-BR",
+  "demo": true,
+  "phrase": "não fui escolhido"
+}
