@@ -15,6 +15,11 @@ export interface Poem {
   language: string;
   demo: boolean;
   phrase?: string;
+  status?: 'draft' | 'published';
+  publishAt?: string | null;
+  createdAt?: string;
+  updatedAt?: string;
+  featuredOrder?: number;
 }
 export interface Place {
   slug: string;

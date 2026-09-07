@@ -2,12 +2,13 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { ArrowRight, ArrowUpRight, Minus, Plus } from 'lucide-react';
-import { poems, searchPoems, matchPoem } from '@/lib/poems';
+import { searchPoems, matchPoem } from '@/lib/poems/queries';
+import type { Poem } from '@/types/poem';
 import { PoemList } from '@/components/editorial';
 import { useSavedPoems } from '@/components/poem-actions';
-export function SearchPoems() {
+export function SearchPoems({ poems }: { poems: Poem[] }) {
   const [query, setQuery] = useState('');
-  const results = searchPoems(query);
+  const results = searchPoems(query, poems);
   return (
     <>
       <label htmlFor="poem-search" className="small-label">
@@ -41,7 +42,7 @@ export function SearchPoems() {
     </>
   );
 }
-export function SavedPoems() {
+export function SavedPoems({ poems }: { poems: Poem[] }) {
   const ids = useSavedPoems();
   const saved = poems.filter((poem) => ids.includes(poem.id));
   return saved.length ? (
@@ -76,10 +77,10 @@ const feelings = [
   { label: 'queria dizer algo que nunca disse', tags: ['confissao'] },
   { label: 'nem eu sei', tags: [] },
 ];
-export function MoodSelector() {
+export function MoodSelector({ poems }: { poems: Poem[] }) {
   const [selected, setSelected] = useState<number | null>(null);
   const poem =
-    selected === null ? undefined : matchPoem(feelings[selected].tags);
+    selected === null ? undefined : matchPoem(feelings[selected].tags, poems);
   return (
     <>
       <div className="mood-options">
@@ -96,6 +97,12 @@ export function MoodSelector() {
         ))}
       </div>
       <div aria-live="polite">
+        {selected !== null && !poem && (
+          <p className="empty-state">
+            Ainda não há um poema para este sentimento. Experimente outro
+            caminho.
+          </p>
+        )}
         {poem && (
           <div className="found-poem" key={selected}>
             <p className="eyebrow">acho que este poema encontrou você.</p>
@@ -109,10 +116,13 @@ export function MoodSelector() {
     </>
   );
 }
-export function PoemReveal() {
+export function PoemReveal({ poems }: { poems: Poem[] }) {
   const [active, setActive] = useState<string | null>(null);
   return (
     <div>
+      {!poems.some((poem) => poem.series === 'Em português se diz') && (
+        <p className="empty-state">Novas formas de dizer estão a caminho.</p>
+      )}
       {poems
         .filter((poem) => poem.series === 'Em português se diz')
         .map((poem) => (

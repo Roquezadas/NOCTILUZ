@@ -2,7 +2,8 @@ export const site = {
   name: 'Noctiluz',
   author: 'Marcelo Roque',
   tagline: 'um jardim para coisas não ditas.',
-  url: 'https://noctiluz.roquezadas.chatgpt.site',
+  url:
+    import.meta.env.VITE_SITE_URL || 'https://noctiluz.roquezadas.chatgpt.site',
   description:
     'Um jardim para coisas não ditas. Um espaço de poesia, sentimentos e pequenos sinais de luz na noite.',
   socials: { instagram: '', tiktok: '', youtube: '' },

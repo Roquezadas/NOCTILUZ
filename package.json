@@ -7,14 +7,19 @@
   },
   "scripts": {
     "dev": "vinext dev",
-    "build": "npm run validate:content && npm run prepare:assets && vinext build --prerender-all",
+    "build": "node scripts/build.mjs",
     "start": "wrangler dev --config dist/server/wrangler.json",
     "lint": "oxlint",
     "format": "oxfmt",
     "typecheck": "tsc --noEmit",
     "prepare:assets": "node scripts/prepare-assets.mjs",
     "validate:content": "node scripts/validate-content.mjs",
-    "test:routes": "node scripts/check-routes.mjs"
+    "test:routes": "node scripts/check-routes.mjs",
+    "test:editorial": "tsx scripts/test-editorial.ts",
+    "test:security": "node scripts/test-security.mjs",
+    "import:poems": "tsx scripts/import-poems-to-supabase.mjs",
+    "test": "npm run test:editorial && npm run test:security",
+    "test:supabase": "node scripts/test-supabase.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
@@ -22,6 +27,7 @@
     "@fontsource/eb-garamond": "^5.3.0",
     "@fontsource/instrument-sans": "^5.3.0",
     "@shadcn/react": "0.3.0",
+    "@supabase/supabase-js": "^2.115.0",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "cmdk": "1.1.1",
@@ -43,6 +49,7 @@
   "devDependencies": {
     "@cloudflare/vite-plugin": "1.37.1",
     "@cloudflare/workers-types": "4.20260515.1",
+    "@electric-sql/pglite": "^0.5.8",
     "@openai/sites-vite-plugin": "0.2.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "22.19.19",
@@ -55,6 +62,7 @@
     "oxlint-tsgolint": "7.0.2001",
     "sharp": "^0.35.4",
     "tailwindcss": "4.2.1",
+    "tsx": "^4.23.13",
     "typescript": "5.9.3",
     "vite": "8.0.13",
     "wrangler": "4.92.0"

@@ -1,8 +1,10 @@
 import type { MetadataRoute } from 'next';
-import { poems } from '@/lib/poems';
+import { getPublishedPoems } from '@/lib/poems/repository';
+export const dynamic = 'force-dynamic';
 import { places } from '@/config/places';
 import { site } from '@/config/site';
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const poems = await getPublishedPoems();
   return [
     ...[
       '',

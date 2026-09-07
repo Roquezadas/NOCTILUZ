@@ -1,8 +1,9 @@
 import { sites } from '@openai/sites-vite-plugin';
 import tailwindcss from '@tailwindcss/postcss';
 import vinext from 'vinext';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import hostingConfig from './.openai/hosting.json';
+import { contentConfig } from './lib/supabase/config';
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
@@ -34,7 +35,14 @@ const localBindingConfig = {
     : [],
 };
 
-export default defineConfig(async () => {
+export default defineConfig(async ({ mode }) => {
+  const values = { ...loadEnv(mode, process.cwd(), ''), ...process.env };
+  contentConfig(values); // Reject privileged keys before writing any build bindings.
+  const vars = Object.fromEntries(
+    ['CONTENT_SOURCE', 'SUPABASE_URL', 'SUPABASE_PUBLISHABLE_KEY'].map(
+      (key) => [key, values[key] ?? (key === 'CONTENT_SOURCE' ? 'static' : '')],
+    ),
+  );
   // Keep Wrangler and Miniflare state project-local. These are non-secret tool
   // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= 'false';
@@ -54,7 +62,7 @@ export default defineConfig(async () => {
       sites(),
       cloudflare({
         viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
-        config: localBindingConfig,
+        config: { ...localBindingConfig, vars },
       }),
     ],
   };

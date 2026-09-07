@@ -1,7 +1,4 @@
 import type { Metadata } from 'next';
-import { Navbar } from '@/components/navbar';
-import { Footer } from '@/components/editorial';
-import { AmbientBackground } from '@/components/ambient-background';
 import { site } from '@/config/site';
 import './globals.css';
 export const metadata: Metadata = {
@@ -22,10 +19,7 @@ export default function RootLayout({
         <a className="skip-link" href="#conteudo">
           Pular para o conteúdo
         </a>
-        <AmbientBackground />
-        <Navbar />
-        <main id="conteudo">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
